@@ -1,6 +1,7 @@
 package com.project.springBootMongoDB.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,6 +43,23 @@ public class UserService {
 		userRepository.deleteById(id);
 		
 	}
+	
+	public User update ( User user ) {
+		
+		Optional<User> newUser = userRepository.findById(user.getId());
+		updateData ( newUser.get() , user );
+		return userRepository.save(newUser.get()) ;
+		
+	}
+	
+	public void updateData ( User newUser , User user ) {
+		
+		newUser.setName(user.getName());
+		newUser.setEmail(user.getEmail());
+		
+	}
+	
+	
 	
 	
 	public User fromDTO ( UserDTO userDTO ) {
