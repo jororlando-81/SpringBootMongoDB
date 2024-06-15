@@ -1,4 +1,4 @@
-	package com.project.springBootMongoDB.resources;
+package com.project.springBootMongoDB.resources;
 
 import java.net.URI;
 import java.util.List;
